@@ -1,121 +1,125 @@
-# Claude Code + Codex 协作开发环境
+# Claude Code + Codex Collaborative Development Environment
 
-> 🚀 3步配置，5分钟上手，让AI协作开发变得简单
+> This project explores collaborative AI development workflows using Codex and Claude Code.
 
-## 📋 快速开始
+> 🚀 3-step setup, 5-minute onboarding, making AI-powered collaborative development simple
 
-### 🎯 第一步：运行一键安装
+**[中文](README-zh.md) | English**
+
+## 📋 Quick Start
+
+### 🎯 Step 1: Run the One-Click Installer
 ```bash
 curl -sSL https://raw.githubusercontent.com/Pluviobyte/Claude-Codex/main/install.sh | bash
 ```
 
-或者手动下载并运行：
+Or download and run manually:
 ```bash
-# 下载安装脚本
+# Download the install script
 curl -O https://raw.githubusercontent.com/Pluviobyte/Claude-Codex/main/install.sh
 chmod +x install.sh
 ./install.sh
 ```
 
-### 📋 第二步：选择配置类型
-脚本会提供三种配置选项：
-- 简单配置：基础协作功能
-- 标准配置：完整开发环境
-- 高级配置：企业级功能（可选Exa搜索需要API密钥）
+### 📋 Step 2: Choose a Configuration Type
+The script offers three configuration options:
+- Simple: Basic collaboration features
+- Standard: Complete development environment
+- Advanced: Enterprise-grade features (optional Exa search requires API key)
 
-### ✅ 第三步：重启并验证
-1. 重启Claude Code应用
-2. 在聊天中输入：`/available-tools`
-3. 确认能看到codex相关工具
+### ✅ Step 3: Restart and Verify
+1. Restart the Claude Code application
+2. Type in chat: `/available-tools`
+3. Confirm that codex-related tools are visible
 
-### 示例
+### Examples
 <img width="606" height="540" alt="image" src="https://github.com/user-attachments/assets/52c60cb3-7e4c-4e56-aec8-ee4f4f1e4af7" />
 <img width="746" height="507" alt="image" src="https://github.com/user-attachments/assets/510453cc-cc2d-4163-8865-178763411384" />
 
 
-## 🛠️ 配置选项
+## 🛠️ Configuration Options
 
-### 简单配置 (推荐新手)
-- Claude Code + Codex 基础协作
-- Sequential-thinking 深度思考
-- 适合快速体验和学习
+### Simple Configuration (Recommended for Beginners)
+- Claude Code + Codex basic collaboration
+- Sequential-thinking for deep analysis
+- Ideal for quick exploration and learning
 
-### 标准配置 (推荐日常使用)
-- 完整的协作开发环境
-- 任务管理和代码索引
-- 适合日常开发工作
+### Standard Configuration (Recommended for Daily Use)
+- Complete collaborative development environment
+- Task management and code indexing
+- Ideal for everyday development work
 
-### 高级配置 (推荐高级用户)
-- 企业级开发环境
-- 浏览器调试和网络搜索
-- 适合复杂项目开发
+### Advanced Configuration (Recommended for Power Users)
+- Enterprise-grade development environment
+- Browser debugging and web search
+- Ideal for complex project development
 
-## 🎯 核心功能
+## 🎯 Core Features
 
-### 🤖 AI协作模式
-- **Claude Code**: 项目管理和代码执行
-- **Codex**: 深度代码分析和生成
-- **智能分工**: 简单任务Claude直接处理，复杂逻辑委托Codex
+### 🤖 AI Collaboration Modes
+- **Claude Code**: Project management and code execution
+- **Codex**: Deep code analysis and generation
+- **Smart Delegation**: Simple tasks handled directly by Claude, complex logic delegated to Codex
 
-### 🔧 智能工作流
-1. **需求理解** → 深度思考分析
-2. **上下文收集** → 全面代码检索
-3. **任务规划** → 智能任务分解
-4. **代码执行** → 小步迭代开发
-5. **质量验证** → 自动化测试和审查
+### 🔧 Intelligent Workflow
+1. **Requirement Understanding** → Deep thinking analysis
+2. **Context Collection** → Comprehensive code retrieval
+3. **Task Planning** → Intelligent task decomposition
+4. **Code Execution** → Incremental iterative development
+5. **Quality Verification** → Automated testing and review
 
-### ⚡ 核心优势
-- **零学习成本**: 基于熟悉的Claude Code界面
-- **智能默认**: 预配置最佳实践，减少配置决策
-- **渐进增强**: 从简单到高级，按需扩展功能
-- **高可靠性**: 完整的错误处理和自动恢复
+### ⚡ Core Advantages
+- **Zero Learning Curve**: Built on the familiar Claude Code interface
+- **Smart Defaults**: Pre-configured best practices, fewer configuration decisions
+- **Progressive Enhancement**: Scale from simple to advanced as needed
+- **High Reliability**: Complete error handling and automatic recovery
 
-## 📚 使用示例
+## 📚 Usage Examples
 
-### 基础对话
+### Basic Conversation
 ```
-用户: 帮我创建一个React组件，显示用户列表
+User: Help me create a React component that displays a user list
 
-Claude: 我来帮你创建一个React组件显示用户列表。让我先调用Codex进行深度分析，然后实现这个功能。
-```
-
-### 复杂任务
-```
-用户: 实现一个完整的用户管理系统，包括认证、CRUD操作和权限管理
-
-Claude: 这是一个复杂的多模块任务。让我使用sequential-thinking进行深度分析，然后制定详细的实施计划。
+Claude: I'll help you create a React component for displaying a user list. Let me first invoke Codex for deep analysis, then implement this feature.
 ```
 
-## 🔍 故障排除
+### Complex Tasks
+```
+User: Implement a complete user management system including authentication, CRUD operations, and permission management
 
-### 常见问题
+Claude: This is a complex multi-module task. Let me use sequential-thinking for deep analysis, then create a detailed implementation plan.
+```
 
-**Q: 看不到codex工具？**
-A: 确保配置文件正确安装，然后重启Claude Code
+## 🔍 Troubleshooting
 
-**Q: Codex连接失败？**
-A: 确保Codex已正确安装并可以运行 `codex mcp-server` 命令
+### Common Issues
 
-**Q: MCP服务器连接失败？**
-A: 运行安装脚本进行修复，或手动安装相关依赖
+**Q: Can't see codex tools?**
+A: Make sure the configuration file is correctly installed, then restart Claude Code
 
-详细故障排除指南请查看：[troubleshooting.md](troubleshooting.md)
+**Q: Codex connection failed?**
+A: Make sure Codex is properly installed and you can run the `codex mcp-server` command
 
-## 📖 更多文档
+**Q: MCP server connection failed?**
+A: Run the install script for repair, or manually install the required dependencies
 
-- [配置文件说明](README-config.md)
-- [故障排除指南](troubleshooting.md)
-- [高级配置指南](advanced.md)
-- [API参考文档](api.md)
+For a detailed troubleshooting guide, see: [troubleshooting.md](troubleshooting.md)
 
-## 🤝 贡献
+## 📖 More Documentation
 
-欢迎贡献代码和改进建议！
+- [Configuration File Guide](README-config.md)
+- [Troubleshooting Guide](troubleshooting.md)
+- [Advanced Configuration Guide](advanced.md)
+- [API Reference](api.md)
 
-## 📄 许可证
+## 🤝 Contributing
 
-MIT License - 详见 [LICENSE](LICENSE) 文件
+Contributions and improvement suggestions are welcome!
+
+## 📄 License
+
+MIT License - See [LICENSE](LICENSE) file for details
 
 ---
 
-**开始你的AI协作开发之旅吧！** 🚀
+**Start your AI collaborative development journey!** 🚀

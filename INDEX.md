@@ -1,90 +1,98 @@
-# Claude Code + Codex 协作开发环境
+# Claude Code + Codex Collaborative Development Environment
 
-## 📁 项目结构
+**[中文](INDEX-zh.md) | English**
+
+> This project explores collaborative AI development workflows using Codex and Claude Code.
+
+## 📁 Project Structure
 
 ```
 claude+codex/
-├── README.md                    # 主要使用指南
-├── README-config.md            # 配置文件详细说明
-├── troubleshooting.md          # 故障排除指南
-├── INDEX.md                    # 项目总览（本文件）
-├── install.sh                  # 一键安装脚本
-├── verify-config.sh            # 配置验证脚本
-├── claude-desktop-config.json  # 标准配置模板
-├── config-simple.json          # 简单配置模板
-└── config-advanced.json        # 高级配置模板
+├── README.md                    # Main guide (English, default)
+├── README-zh.md                 # Main guide (Chinese)
+├── README-config.md             # Configuration details (English)
+├── README-config-zh.md          # Configuration details (Chinese)
+├── troubleshooting.md           # Troubleshooting guide (English)
+├── troubleshooting-zh.md        # Troubleshooting guide (Chinese)
+├── INDEX.md                     # Project overview (English, default)
+├── INDEX-zh.md                  # Project overview (Chinese)
+├── install.sh                   # One-click install script
+├── verify-config.sh             # Configuration verification script
+├── claude-desktop-config.json   # Standard configuration template
+├── config-simple.json           # Simple configuration template
+└── config-advanced.json         # Advanced configuration template
 ```
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 3步配置，5分钟上手
+### 3-Step Setup, 5-Minute Onboarding
 
-1. **一键安装**
+1. **One-Click Install**
    ```bash
-   curl -sSL https://raw.githubusercontent.com/claude-codex/setup/main/install.sh | bash
+   curl -sSL https://raw.githubusercontent.com/Pluviobyte/Claude-Codex/main/install.sh | bash
    ```
 
-2. **设置API密钥**
-   - 准备OpenAI API密钥
-   - 在安装过程中输入密钥
+2. **Set API Key**
+   - Prepare your OpenAI API key
+   - Enter the key during installation
 
-3. **重启验证**
-   - 重启Claude Code
-   - 输入 `/available-tools` 验证
+3. **Restart and Verify**
+   - Restart Claude Code
+   - Type `/available-tools` to verify
 
-## 📋 文档说明
+## 📋 Documentation
 
-| 文档 | 描述 | 适用人群 |
-|------|------|----------|
-| [README.md](README.md) | 主要使用指南 | 所有用户 |
-| [README-config.md](README-config.md) | 配置文件详细说明 | 需要自定义配置的用户 |
-| [troubleshooting.md](troubleshooting.md) | 故障排除指南 | 遇到问题的用户 |
+| Document | Description | Audience |
+|----------|-------------|----------|
+| [README.md](README.md) | Main guide | All users |
+| [README-config.md](README-config.md) | Configuration details | Users needing custom config |
+| [troubleshooting.md](troubleshooting.md) | Troubleshooting guide | Users with issues |
 
-## 🛠️ 工具脚本
+## 🛠️ Tool Scripts
 
-| 脚本 | 功能 | 使用方法 |
-|------|------|----------|
-| [install.sh](install.sh) | 一键安装配置 | `./install.sh` |
-| [verify-config.sh](verify-config.sh) | 验证配置正确性 | `./verify-config.sh` |
+| Script | Function | Usage |
+|--------|----------|-------|
+| [install.sh](install.sh) | One-click install | `./install.sh` |
+| [verify-config.sh](verify-config.sh) | Verify configuration | `./verify-config.sh` |
 
-## ⚙️ 配置模板
+## ⚙️ Configuration Templates
 
-| 配置文件 | 复杂度 | 适用场景 |
-|----------|--------|----------|
-| [config-simple.json](config-simple.json) | 简单 | 快速体验、基础开发 |
-| [claude-desktop-config.json](claude-desktop-config.json) | 标准 | 日常开发工作 |
-| [config-advanced.json](config-advanced.json) | 高级 | 复杂项目、企业级应用 |
+| Config File | Complexity | Use Case |
+|-------------|------------|----------|
+| [config-simple.json](config-simple.json) | Simple | Quick start, basic development |
+| [claude-desktop-config.json](claude-desktop-config.json) | Standard | Everyday development |
+| [config-advanced.json](config-advanced.json) | Advanced | Complex projects, enterprise use |
 
-## 🎯 核心特性
+## 🎯 Core Features
 
-- **零学习成本**: 基于熟悉的Claude Code界面
-- **智能协作**: Claude Code + Codex 双AI协作
-- **一键配置**: 自动化安装和配置
-- **多级复杂度**: 从简单到高级，按需选择
-- **跨平台支持**: Windows/macOS/Linux
+- **Zero Learning Curve**: Built on the familiar Claude Code interface
+- **Smart Collaboration**: Claude Code + Codex dual-AI collaboration
+- **One-Click Setup**: Automated installation and configuration
+- **Multiple Complexity Levels**: Choose from simple to advanced as needed
+- **Cross-Platform Support**: Windows/macOS/Linux
 
-## 🤝 协作模式
+## 🤝 Collaboration Modes
 
-### Claude Code (主AI)
-- ✅ 项目管理和任务规划
-- ✅ 简单代码编写和执行
-- ✅ 用户交互和最终决策
-- ✅ 配置管理和环境设置
+### Claude Code (Primary AI)
+- ✅ Project management and task planning
+- ✅ Simple code writing and execution
+- ✅ User interaction and final decisions
+- ✅ Configuration management and environment setup
 
-### Codex (支持AI)
-- ✅ 深度代码分析和生成
-- ✅ 复杂算法设计和优化
-- ✅ 代码质量审查和评估
-- ✅ 上下文收集和知识检索
+### Codex (Support AI)
+- ✅ Deep code analysis and generation
+- ✅ Complex algorithm design and optimization
+- ✅ Code quality review and assessment
+- ✅ Context collection and knowledge retrieval
 
-## 📞 获取帮助
+## 📞 Getting Help
 
-如果遇到问题：
+If you encounter issues:
 
-1. **首先运行**: `./verify-config.sh` 检查配置
-2. **查看**: [troubleshooting.md](troubleshooting.md) 故障排除指南
-3. **提交**: GitHub Issue 获取社区支持
+1. **First run**: `./verify-config.sh` to check configuration
+2. **See**: [troubleshooting.md](troubleshooting.md) troubleshooting guide
+3. **Submit**: a GitHub Issue for community support
 
 ---
 
-开始你的AI协作开发之旅！🚀
+Start your AI collaborative development journey! 🚀

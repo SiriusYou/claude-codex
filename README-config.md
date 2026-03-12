@@ -1,44 +1,46 @@
-# Claude Code + Codex 配置文件说明
+# Claude Code + Codex Configuration Guide
 
-## 📁 配置文件选择
+**[中文](README-config-zh.md) | English**
 
-### 1. 简单配置 (推荐新手)
-- **文件**: `config-simple.json`
-- **功能**: Claude Code + Codex 基础协作
-- **包含**: Sequential-thinking (深度思考)
-- **适用**: 快速体验和基础开发
+## 📁 Configuration File Selection
 
-### 2. 标准配置 (推荐日常使用)
-- **文件**: `claude-desktop-config.json`
-- **功能**: 完整的协作开发环境
-- **包含**: 任务管理 + 代码索引
-- **适用**: 日常开发工作
+### 1. Simple Configuration (Recommended for Beginners)
+- **File**: `config-simple.json`
+- **Features**: Claude Code + Codex basic collaboration
+- **Includes**: Sequential-thinking (deep analysis)
+- **Best for**: Quick exploration and basic development
 
-### 3. 高级配置 (推荐高级用户)
-- **文件**: `config-advanced.json`
-- **功能**: 企业级开发环境
-- **包含**: 浏览器调试 + 网络搜索
-- **适用**: 复杂项目和高级开发
+### 2. Standard Configuration (Recommended for Daily Use)
+- **File**: `claude-desktop-config.json`
+- **Features**: Complete collaborative development environment
+- **Includes**: Task management + code indexing
+- **Best for**: Everyday development work
 
-## 🔧 配置步骤
+### 3. Advanced Configuration (Recommended for Power Users)
+- **File**: `config-advanced.json`
+- **Features**: Enterprise-grade development environment
+- **Includes**: Browser debugging + web search
+- **Best for**: Complex projects and advanced development
 
-### 第一步：选择配置文件
-根据你的需求选择合适的配置文件。
+## 🔧 Configuration Steps
 
-### 第二步：设置API密钥
-编辑配置文件，替换以下内容：
+### Step 1: Choose a Configuration File
+Select the configuration file that best suits your needs.
+
+### Step 2: Set API Keys
+Edit the configuration file and replace the following:
 ```json
 "OPENAI_API_KEY": "your-openai-api-key-here"
 ```
-替换为你的真实OpenAI API密钥。
+Replace with your actual OpenAI API key.
 
-可选配置：
+Optional configuration:
 ```json
 "EXA_API_KEY": "your-exa-api-key-here"
 ```
-如果使用高级配置，可以添加Exa搜索API密钥。
+If using the advanced configuration, you can add an Exa search API key.
 
-### 第三步：复制到正确位置
+### Step 3: Copy to the Correct Location
 **macOS**:
 ```bash
 cp claude-desktop-config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
@@ -54,14 +56,14 @@ copy claude-desktop-config.json %APPDATA%\Claude\claude_desktop_config.json
 cp claude-desktop-config.json ~/.config/claude/claude_desktop_config.json
 ```
 
-### 第四步：重启Claude Code
-重启Claude Code应用，配置将自动生效。
+### Step 4: Restart Claude Code
+Restart the Claude Code application and the configuration will take effect automatically.
 
-## ✅ 验证配置
+## ✅ Verify Configuration
 
-重启后，在Claude Code中输入：
+After restarting, type in Claude Code:
 ```
 /available-tools
 ```
 
-如果看到codex相关的工具，说明配置成功！
+If you see codex-related tools, the configuration is successful!

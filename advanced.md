@@ -1,10 +1,12 @@
-# 高级配置指南
+# Advanced Configuration Guide
 
-## 🔧 工作流程配置
+**[中文](advanced-zh.md) | English**
 
-### 严格工具调用顺序
+## 🔧 Workflow Configuration
 
-根据CLAUDE.md要求，必须严格按照以下顺序执行：
+### Strict Tool Call Order
+
+As required by CLAUDE.md, tools must be executed in the following strict order:
 
 ```json
 {
@@ -19,125 +21,125 @@
 }
 ```
 
-### 职责分离配置
+### Separation of Responsibilities
 
-**主AI（Claude Code）职责**：
-- ✅ 任务规划和拆解（使用 shrimp-task-manager）
-- ✅ 直接代码编写（使用 Read/Edit/Write）
-- ✅ 简单逻辑实现（<10 行核心逻辑）
-- ✅ 最终决策确认（基于 Codex 建议）
-- ✅ 决策记录留痕（operations-log.md）
+**Primary AI (Claude Code) Responsibilities**:
+- ✅ Task planning and decomposition (using shrimp-task-manager)
+- ✅ Direct code writing (using Read/Edit/Write)
+- ✅ Simple logic implementation (<10 lines of core logic)
+- ✅ Final decision confirmation (based on Codex suggestions)
+- ✅ Decision logging (operations-log.md)
 
-**Codex（支持AI）职责**：
-- ✅ 深度推理分析（使用 sequential-thinking）
-- ✅ 全面代码检索（充分时间进行代码库扫描）
-- ✅ 复杂逻辑设计（>10 行核心逻辑）
-- ✅ 上下文收集和分析（输出到 `.claude/context-*.json`）
-- ✅ 质量审查评分（代码审查、风险识别）
+**Codex (Support AI) Responsibilities**:
+- ✅ Deep reasoning analysis (using sequential-thinking)
+- ✅ Comprehensive code retrieval (thorough codebase scanning)
+- ✅ Complex logic design (>10 lines of core logic)
+- ✅ Context collection and analysis (output to `.claude/context-*.json`)
+- ✅ Quality review scoring (code review, risk identification)
 
-## 📁 目录结构规范
+## 📁 Directory Structure Standards
 
-所有工作文件必须写入项目本地 `.claude/` 目录：
+All working files must be written to the project-local `.claude/` directory:
 
 ```
 <project>/.claude/
-├── context-initial.json        ← 初步收集（Codex 输出）
-├── context-question-N.json     ← 深度分析（Codex 输出）
-├── coding-progress.json        ← 实时编码状态（主AI 输出）
-├── operations-log.md           ← 决策记录（主AI 输出）
-├── review-report.md            ← 审查报告（Codex 输出）
-├── codex-sessions.json         ← 会话管理（Codex 持久化）
-├── shrimp/                     ← 任务管理数据
-├── codex/                      ← Codex 工作数据
-├── context/                    ← 上下文数据
-├── logs/                       ← 日志文件
-└── cache/                      ← 缓存数据
+├── context-initial.json        ← Initial collection (Codex output)
+├── context-question-N.json     ← Deep analysis (Codex output)
+├── coding-progress.json        ← Real-time coding status (Primary AI output)
+├── operations-log.md           ← Decision log (Primary AI output)
+├── review-report.md            ← Review report (Codex output)
+├── codex-sessions.json         ← Session management (Codex persistence)
+├── shrimp/                     ← Task management data
+├── codex/                      ← Codex working data
+├── context/                    ← Context data
+├── logs/                       ← Log files
+└── cache/                      ← Cache data
 ```
 
-## 🔄 标准工作流程（6步骤）
+## 🔄 Standard Workflow (6 Steps)
 
-### 1. 分析需求
-- 使用 sequential-thinking 深度理解需求
-- Codex 进行全面上下文收集
+### 1. Analyze Requirements
+- Use sequential-thinking for deep requirement understanding
+- Codex performs comprehensive context collection
 
-### 2. 获取上下文
-- Codex 执行结构化快速扫描
-- 输出到 `.claude/context-initial.json`
-- 主AI 识别关键疑问
+### 2. Gather Context
+- Codex executes structured quick scan
+- Output to `.claude/context-initial.json`
+- Primary AI identifies key questions
 
-### 3. 选择工具
-- 根据任务复杂度选择合适的工具组合
-- 遵循严格的工具调用顺序
+### 3. Select Tools
+- Choose the right tool combination based on task complexity
+- Follow the strict tool call order
 
-### 4. 执行任务
-- 主AI 直接编码（简单逻辑）
-- 复杂逻辑委托 Codex 设计
-- 实时更新 `coding-progress.json`
+### 4. Execute Task
+- Primary AI codes directly (simple logic)
+- Complex logic delegated to Codex for design
+- Real-time updates to `coding-progress.json`
 
-### 5. 验证质量
-- Codex 使用 sequential-thinking 深度审查
-- 生成评分和建议（写入 `.claude/review-report.md`）
-- 主AI 基于建议快速决策
+### 5. Verify Quality
+- Codex uses sequential-thinking for deep review
+- Generates scores and suggestions (written to `.claude/review-report.md`)
+- Primary AI makes quick decisions based on suggestions
 
-### 6. 存储知识
-- 记录决策过程到 `operations-log.md`
-- 更新上下文文件
-- 维护会话状态
+### 6. Store Knowledge
+- Record decision process in `operations-log.md`
+- Update context files
+- Maintain session state
 
-## 🎯 Codex 调用规范
+## 🎯 Codex Call Specifications
 
-### 首次调用
+### First Call
 ```javascript
 mcp__codex__codex(
   model="gpt-5-codex",
   sandbox="danger-full-access",
   approval-policy="on-failure",
-  prompt="[TASK_MARKER: YYYYMMDD-HHMMSS-XXXX]\n目标：[任务描述]\n输出：[交付物列表]"
+  prompt="[TASK_MARKER: YYYYMMDD-HHMMSS-XXXX]\nObjective: [Task description]\nOutput: [Deliverables list]"
 )
 ```
 
-### 继续会话
+### Continue Session
 ```javascript
-mcp__codex__codex-reply(conversationId="<ID>", prompt="[指令]")
+mcp__codex__codex-reply(conversationId="<ID>", prompt="[Instructions]")
 ```
 
-### conversationId 管理
-- 主AI生成 task_marker：`[TASK_MARKER: YYYYMMDD-HHMMSS-XXXX]`
-- Codex 查询并持久化到 `.claude/codex-sessions.json`
-- 响应末尾返回：`[CONVERSATION_ID]: <conversationId>`
+### conversationId Management
+- Primary AI generates task_marker: `[TASK_MARKER: YYYYMMDD-HHMMSS-XXXX]`
+- Codex queries and persists to `.claude/codex-sessions.json`
+- Response ends with: `[CONVERSATION_ID]: <conversationId>`
 
-## 📊 质量审查评分系统
+## 📊 Quality Review Scoring System
 
-### 评分维度
-- **技术维度**（代码质量、测试覆盖、规范遵循）
-- **战略维度**（需求匹配、架构一致、风险评估）
-- **综合评分**（0-100）
+### Scoring Dimensions
+- **Technical Dimension** (code quality, test coverage, standard compliance)
+- **Strategic Dimension** (requirement matching, architecture consistency, risk assessment)
+- **Overall Score** (0-100)
 
-### 决策规则
-- ≥90分且建议"通过" → 直接确认通过
-- <80分且建议"退回" → 直接确认退回
-- 80-89分或建议"需讨论" → 仔细审阅后决策
+### Decision Rules
+- ≥90 with "pass" recommendation → Approve directly
+- <80 with "reject" recommendation → Reject directly
+- 80-89 or "needs discussion" recommendation → Careful review before decision
 
-## ⚡ 自动化执行策略
+## ⚡ Automated Execution Strategy
 
-### 默认自动执行（无需确认）
-- ✅ 所有文件读写操作
-- ✅ 标准工具调用（code-index、exa、grep等）
-- ✅ 代码编写、修改、重构
-- ✅ 文档生成和更新
-- ✅ 测试执行和验证脚本运行
-- ✅ 任务规划和分解、上下文收集
-- ✅ 调用 mcp__codex__codex 或 codex-reply
+### Default Auto-Execute (No Confirmation Needed)
+- ✅ All file read/write operations
+- ✅ Standard tool calls (code-index, exa, grep, etc.)
+- ✅ Code writing, modification, refactoring
+- ✅ Documentation generation and updates
+- ✅ Test execution and verification scripts
+- ✅ Task planning and decomposition, context collection
+- ✅ Calling mcp__codex__codex or codex-reply
 
-### 需要确认的例外情况
-- ⚠️ 删除核心配置文件
-- ⚠️ 数据库 schema 的破坏性变更
-- ⚠️ Git push 到远程仓库
-- ⚠️ 连续3次相同错误后需要策略调整
+### Exceptions Requiring Confirmation
+- ⚠️ Deleting core configuration files
+- ⚠️ Destructive database schema changes
+- ⚠️ Git push to remote repository
+- ⚠️ Strategy adjustment needed after 3 consecutive identical errors
 
-## 🔍 高级功能配置
+## 🔍 Advanced Feature Configuration
 
-### Exa 搜索配置
+### Exa Search Configuration
 ```json
 {
   "exa": {
@@ -151,7 +153,7 @@ mcp__codex__codex-reply(conversationId="<ID>", prompt="[指令]")
 }
 ```
 
-### Chrome DevTools 集成
+### Chrome DevTools Integration
 ```json
 {
   "chrome-devtools": {
@@ -164,7 +166,7 @@ mcp__codex__codex-reply(conversationId="<ID>", prompt="[指令]")
 }
 ```
 
-### Code Index 配置
+### Code Index Configuration
 ```json
 {
   "code-index": {
@@ -177,39 +179,39 @@ mcp__codex__codex-reply(conversationId="<ID>", prompt="[指令]")
 }
 ```
 
-## 🛠️ 故障排除
+## 🛠️ Troubleshooting
 
-### 常见问题
-1. **工具调用顺序错误** → 检查 workflow.execution_order 配置
-2. **路径规范问题** → 确保所有工具使用 `.claude/` 目录
-3. **会话管理失败** → 检查 `.claude/codex-sessions.json` 文件
-4. **权限问题** → 确保 `.claude/` 目录有写权限
+### Common Issues
+1. **Wrong tool call order** → Check workflow.execution_order configuration
+2. **Path convention issues** → Ensure all tools use the `.claude/` directory
+3. **Session management failures** → Check `.claude/codex-sessions.json` file
+4. **Permission issues** → Ensure `.claude/` directory has write permissions
 
-### 调试命令
+### Debug Commands
 ```bash
-# 验证配置
+# Verify configuration
 ./verify-config.sh
 
-# 检查工具调用顺序
+# Check tool call order
 grep -A 10 "execution_order" .claude/claude_desktop_config.json
 
-# 查看会话状态
+# View session state
 cat .claude/codex-sessions.json
 
-# 检查工作目录权限
+# Check working directory permissions
 ls -la .claude/
 ```
 
-## 📈 性能优化
+## 📈 Performance Optimization
 
-### 建议设置
-- 使用 SSD 存储提高 I/O 性能
-- 配置足够的内存（推荐 8GB+）
-- 定期清理 `.claude/cache/` 目录
-- 使用本地缓存减少重复计算
+### Recommended Settings
+- Use SSD storage for improved I/O performance
+- Configure sufficient memory (8GB+ recommended)
+- Regularly clean the `.claude/cache/` directory
+- Use local caching to reduce redundant computation
 
-### 监控指标
-- 工具响应时间
-- 会话成功率
-- 代码审查质量分数
-- 任务完成时间
+### Monitoring Metrics
+- Tool response time
+- Session success rate
+- Code review quality scores
+- Task completion time
